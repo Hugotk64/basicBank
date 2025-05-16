@@ -134,7 +134,7 @@ Account loginMenu(int *success) {
     cleanScreen();
 
     printf("=====================================\n");
-    printf("        WELCOME TO HNB BANK          \n");
+    printf("        WELCOME TO SAO BANK          \n");
     printf("=====================================\n");
     printf("              LOGIN MENU             \n");
     printf("-------------------------------------\n");
@@ -146,6 +146,49 @@ Account loginMenu(int *success) {
 
     // Load account from file
     return loadAccount(accountNumber, pin, success);
+}
+
+// Display main menu
+int showMenu(Account account, Account *result) {
+    int choice;
+    cleanScreen();
+
+    printf("=====================================\n");
+    printf("         SAO - Hello, %s!\n", account.name);
+    printf("=====================================\n");
+    printf("1. Check Balance\n");
+    printf("2. Deposit\n");
+    printf("3. Withdraw\n");
+    printf("4. Logout\n");
+    printf("5. Exit\n");
+    printf("Choose an option: ");
+    scanf("%d", &choice);
+    
+        switch (choice) {
+        case 1:
+            printf("Your current balance is: $%.2f\n", account.balance);
+            pause();
+            *result = account;
+            return 0;
+        case 2:
+            *result = deposit(account);
+            updateAccount(*result);
+            return 0;
+        case 3:
+            *result = withdraw(account);
+            updateAccount(*result);
+            return 0;
+        case 4:
+            return 1; // Logout
+        case 5:
+            return 0; // Exit (to fix change for a 2)
+        default:
+            printf("Invalid option.\n");
+            pause();
+            *result = account;
+            return 0;
+    }
+
 }
 
 // ***** Utility Functions *****
