@@ -11,7 +11,9 @@ typedef struct {
 } Account;
 
 // Fuction prototype
-
+// File I/O functions
+Account loadAccount(int accountNumber, int pin, int *found);
+int updateAccount(Account account);
 // Utility functions
 void cleanScreen();
 void pause();
