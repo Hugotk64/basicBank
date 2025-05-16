@@ -85,6 +85,25 @@ int updateAccount(Account account) {
     return found;
 }
 
+// ***** Account Functions *****
+// Withdraw money from account
+Account withdraw(Account account) {
+    float amount;
+    printf("Enter amount to withdraw: ");
+    scanf("%f", &amount);
+
+    // Check if sufficient balance is available
+    if (amount > account.balance) {
+        printf("Insufficient balance.\n");
+    } else {
+        account.balance -= amount;
+        printf("Withdrawal successful.\n");
+    }
+
+    pause();
+    return account;
+}
+
 // ***** Utility Functions *****
 // Clean terminal
 void cleanScreen() {
