@@ -14,6 +14,9 @@ typedef struct {
 // File I/O functions
 Account loadAccount(int accountNumber, int pin, int *found);
 int updateAccount(Account account);
+// Account functions
+Account withdraw(Account account);
+Account deposit(Account account);
 // Utility functions
 void cleanScreen();
 void pause();
@@ -120,6 +123,29 @@ Account deposit(Account account) {
 
     pause();
     return account;
+}
+
+// ***** User Interface Functions *****
+// Display login menu
+Account loginMenu(int *success) {
+    int accountNumber;
+    int pin;
+
+    cleanScreen();
+
+    printf("=====================================\n");
+    printf("        WELCOME TO HNB BANK          \n");
+    printf("=====================================\n");
+    printf("              LOGIN MENU             \n");
+    printf("-------------------------------------\n");
+
+    printf("Enter Account Number: ");
+    scanf("%d", &accountNumber);
+    printf("Enter PIN: ");
+    scanf("%d", &pin);
+
+    // Load account from file
+    return loadAccount(accountNumber, pin, success);
 }
 
 // ***** Utility Functions *****
