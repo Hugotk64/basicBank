@@ -17,12 +17,48 @@ int updateAccount(Account account);
 // Account functions
 Account withdraw(Account account);
 Account deposit(Account account);
+// user interface
+Account loginMenu(int *success);
+int showMenu(Account account, Account *result);
 // Utility functions
 void cleanScreen();
 void pause();
 
 int main() {
-    printf("Hello, World!\n");
+    Account currentAccount;
+    int loggedIn = 0;
+    int exitApp = 0;
+
+    // Aplication loop
+    while (!exitApp)
+    {
+        int found = 0;
+        currentAccount = loginMenu(&found);
+
+        // Validates if login fail or not 
+        if (!found)
+        {
+            printf("Login failed.\n");
+            pause();
+            continue;
+        }
+
+        int status = 0;
+        // Main menu loop
+        while (status != 1) {
+            Account updatedAccount;
+            status = showMenu(currentAccount, &updatedAccount);
+            currentAccount = updatedAccount;
+        }
+        
+        // Exit flag
+        if (status == 2)
+        {
+            exitApp = 1;
+        }
+    }
+    
+    printf("Thank you for using HNB!\n");
     return 0;
 }
 
