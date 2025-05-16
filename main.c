@@ -104,6 +104,24 @@ Account withdraw(Account account) {
     return account;
 }
 
+// Deposit money into account
+Account deposit(Account account) {
+    float amount;
+    printf("Enter amount to deposit: ");
+    scanf("%f", &amount);
+
+    // Check if amount is valid
+    if (amount <= 0) {
+        printf("Invalid amount.\n");
+    } else {
+        account.balance += amount;
+        printf("Deposit successful.\n");
+    }
+
+    pause();
+    return account;
+}
+
 // ***** Utility Functions *****
 // Clean terminal
 void cleanScreen() {
