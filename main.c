@@ -48,6 +48,41 @@ Account loadAccount(int accountNumber, int pin, int *found) {
     return account;
 }
 
+// Update account in file
+int updateAccount(Account account) {
+    // Open the file in read mode
+    FILE *file = fopen("accounts.txt", "r");
+    FILE *tempFile = fopen("temp.txt", "w");
+    Account tempAccount;
+    int found = 0;
+
+    // Check if the files opened successfully
+    if (file == NULL || tempFile == NULL) {
+        printf("Error opening file.\n");
+        return 0;
+    }
+
+    // Read each line from the file and write to temp file
+    while (fscanf(file, "%49[^,],%d,%d,%f\n", tempAccount.name, &tempAccount.accountNumber, &tempAccount.pin, &tempAccount.balance) == 4) {
+        // If account number matches, update the account
+        if (tempAccount.accountNumber == account.accountNumber) {
+            fprintf(tempFile, "%s,%d,%d,%.2f\n", account.name, account.accountNumber, account.pin, account.balance);
+            found = 1;
+        } else {
+            fprintf(tempFile, "%s,%d,%d,%.2f\n", tempAccount.name, tempAccount.accountNumber, tempAccount.pin, tempAccount.balance);
+        }
+    }
+
+    fclose(file);
+    fclose(tempFile);
+
+    // Replace original file with updated file
+    remove("accounts.txt");
+    rename("temp.txt", "accounts.txt");
+
+    return found;
+}
+
 // ***** Utility Functions *****
 // Clean terminal
 void cleanScreen() {
