@@ -218,6 +218,7 @@ int showMenu(Account account, Account *result) {
         case 4:
             return 1; // Logout
         case 5:
+            *result = account;
             return 0; // To enable exit optin change 0 for 2.
         default:
             printf("Invalid option.\n");
