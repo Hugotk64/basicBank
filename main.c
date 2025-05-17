@@ -199,6 +199,7 @@ int showMenu(Account account, Account *result) {
     printf("5. Exit\n");
     printf("Choose an option: ");
     scanf("%d", &choice);
+    getchar();
     
         switch (choice) {
         case 1:
@@ -217,7 +218,7 @@ int showMenu(Account account, Account *result) {
         case 4:
             return 1; // Logout
         case 5:
-            return 0; // Exit (to fix change for a 2)
+            return 0; // To enable exit optin change 0 for 2.
         default:
             printf("Invalid option.\n");
             pause();
