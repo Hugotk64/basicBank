@@ -72,5 +72,7 @@ Of course, unlike the anime, you're not actually stuck here, you can exit the pr
 
 # 👨‍💻 Author
 Hugo Antonio Castillo Vargas
+
 Student of Computer Engineering
+
 UNED - Universidad Estatal a Distancia
