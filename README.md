@@ -5,17 +5,25 @@ Simple console-based banking application in C. It allows users to log in, check 
 # 📋 Features
 
 - Account login with account number and pin
+
 - View account balance
+
 - Deposit money
+
 - Withdraw money
+
 - Account data stored and updated in `accounts.txt`
+
 - Clean, user-friendly terminal interface
 
 # 🗂️ Project Structure
 
-basiBank
+basiBank/
+
 |--accounts.txt
+
 |--main.c
+
 |--README.md
 
 # 📄 accounts.txt Format
@@ -39,12 +47,19 @@ To run use bash:
 Once you compile the program and run it you have to:
 
 -Open accounts.txt to see accounts information
+
 -Log in using any of the account number and pin of any listed account
+
 -check the balance of this account
+
 -Deposit money into the account
+
 -Withdrawn mony from the account
+
 -Check the balance again to see updated amount
+
 -Log out to try other accounts
+
 -Exit the program
 
 💡 Tip: You can add or edit accounts manually in `accounts.txt`.
